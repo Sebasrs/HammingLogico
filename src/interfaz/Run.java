@@ -1,6 +1,6 @@
 package interfaz;
 
-import java.io.FileInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import algoritmo.Hamming;
@@ -37,7 +37,7 @@ public class Run extends Application {
 	String numToHam;
 	String parity;
 	int windX = 1360;
-	int windY = 720;
+	int windY = 730;
 	
 	HBox tableNnums;
     Text detection;
@@ -84,10 +84,11 @@ public class Run extends Application {
 		
 		
 		//First scene layout
-		Text mainHeader = new Text("CÃ³digo Hamming");
+		Text mainHeader = new Text("Código Hamming");
 		mainHeader.setFont(new Font(30));
 		
-		Image logo = new Image(new FileInputStream("./media/logo-tec.png"));
+		URL URL = getClass().getResource("/media/logo-tec.png");
+		Image logo = new Image(URL.toString());
 		ImageView TEClogo = new ImageView(logo);
 		TEClogo.setFitHeight(355); 
         TEClogo.setFitWidth(400);
@@ -97,13 +98,14 @@ public class Run extends Application {
         VBox hammingImage = new VBox(10);
         hammingImage.setAlignment(Pos.BASELINE_CENTER);
         Label caption = new Label("Richard Wesley Hamming");
-        Image hamming = new Image(new FileInputStream("./media/hamming.jpg"));
+        URL URL2 = getClass().getResource("/media/hamming.jpg");
+        Image hamming = new Image(URL2.toString());
         ImageView hammingV = new ImageView(hamming);
         hammingV.setFitHeight(305); 
         hammingV.setFitWidth(170);
         hammingV.setPreserveRatio(true);
         hammingImage.getChildren().addAll(hammingV, caption);
-        Text someStory = new Text("En informÃ¡tica, el cÃ³digo de Hamming es un cÃ³digo detector y corrector de errores\nque lleva el nombre de su inventor, Richard Hamming.\nEn los datos codificados en Hamming se pueden detectar errores\nen un bit y corregirlos, sin embargo no se distingue entre errores de dos bits\n y de un bit (para lo que se usa Hamming extendido). Esto representa\nuna mejora respecto a los cÃ³digos con bit de paridad, que pueden detectar\nerrores en sÃ³lo un bit, pero no pueden corregirlo.\n--------------------------------------------------------------------------------------------------------------------\nDiseÃ±o LÃ³gico Tarea 2 en Grupo\nIntegrantes:\n- Sebastian Rivera Soto 2016074041\n- Victor Bulgarelli 2016078592\n- Daniel AndrÃ©s Rojas 2016089821\n- Kevin Barquero Loria 2016038605");
+        Text someStory = new Text("En informática, el código de Hamming es un código detector y corrector de errores\nque lleva el nombre de su inventor, Richard Hamming.\nEn los datos codificados en Hamming se pueden detectar errores\nen un bit y corregirlos, sin embargo no se distingue entre errores de dos bits\n y de un bit (para lo que se usa Hamming extendido). Esto representa\nuna mejora respecto a los códigos con bit de paridad, que pueden detectar\nerrores en sólo un bit, pero no pueden corregirlo.\n--------------------------------------------------------------------------------------------------------------------\nDiseño Lógico Tarea 2 en Grupo\nIntegrantes:\n- Sebastián Rivera Soto 2016074041\n- Víctor Bulgarelli 2016078592\n- Daniel Andrés Rojas 2016089821\n- Kevin Barquero Loria 2016038605");
         someStory.setFont(new Font(14));
         
         hammingStory.getChildren().addAll(someStory, hammingImage);
@@ -128,13 +130,13 @@ public class Run extends Application {
         mainScene = new Scene(canvasMain, windX, windY);
       
         //Second scene layout
-        Text typeNChoose = new Text("Digite el nÃºmero en hexadecimal al que le desea realizar el proceso\nademÃ¡s seleccione el tipo de paridad deseado");
+        Text typeNChoose = new Text("Digite el número en hexadecimal al que le desea realizar el proceso\nademás seleccione el tipo de paridad deseado");
         typeNChoose.setFont(new Font(20));
         typeNChoose.setStyle("-fx-text-alignment:center");
         
         VBox form = new VBox(10);
         form.setAlignment(Pos.BASELINE_CENTER);
-        Text enterN = new Text("Digite nÃºmero hexadecimal de 3 dÃ­gitos");
+        Text enterN = new Text("Digite número hexadecimal de 3 dígitos");
         TextField number = new TextField();
         number.setMaxWidth(70);
         form.getChildren().addAll(enterN, number);
@@ -160,7 +162,7 @@ public class Run extends Application {
         ham1 = new Scene(canvasHam1, windX, windY);
         
         //Third scene layout
-        Text table1N = new Text("Tabla No.1\nCÃ¡lculo de los bits de paridad en el cÃ³digo Hamming");
+        Text table1N = new Text("Tabla No.1\nCálculo de los bits de paridad en el código Hamming");
         table1N.setFont(new Font(18));
         
         HBox optB = new HBox(448);
@@ -174,7 +176,7 @@ public class Run extends Application {
         ham2 = new Scene(canvasHam2, windX,windY);
         
         //fourth scene layout
-        Text bitChanger = new Text("Digite el nÃºmero que representa la posiciÃ³n\ndel bit a cambiar");
+        Text bitChanger = new Text("Digite el número que representa la posición\ndel bit a cambiar");
         bitChanger.setFont(new Font(20));
         bitChanger.setStyle("-fx-text-alignment:center");
         
@@ -183,7 +185,7 @@ public class Run extends Application {
         
         VBox formToBit = new VBox(10);
         formToBit.setAlignment(Pos.BASELINE_CENTER);
-        Text instruction = new Text("Digite un nÃºmero entre 1 y 17");
+        Text instruction = new Text("Digite un número entre 1 y 17");
         instruction.setFont(new Font(15));
         TextField bitToChange = new TextField();
         bitToChange.setMaxWidth(34);
@@ -195,7 +197,7 @@ public class Run extends Application {
         bitChange = new Scene(canvasBit, windX, windY);
         
         //fifth scene layout
-        Text table2Text = new Text("Tabla No.2\nComprobaciÃ³n de los bits de paridad");
+        Text table2Text = new Text("Tabla No.2\nComprobación de los bits de paridad");
         table2Text.setFont(new Font(20));
         Text sol2 = new Text("No se encontraron errores");
         Button restart = new Button("Volver a inicio");
@@ -206,7 +208,7 @@ public class Run extends Application {
         cal.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	if(converter.covertFromHexToBin(number.getText()) == "Su nÃºmero no es de tres dÃ­gitos" || converter.covertFromHexToBin(number.getText()) == "Error su nÃºmero no es hexadecimal") {
+            	if(converter.covertFromHexToBin(number.getText()) == "Su número no es de tres dígitos" || converter.covertFromHexToBin(number.getText()) == "Error su número no es hexadecimal") {
             		final Stage dialog = new Stage();
                     dialog.initModality(Modality.APPLICATION_MODAL);
                     dialog.initOwner(primaryStage);
@@ -223,7 +225,7 @@ public class Run extends Application {
                     dialog.initOwner(primaryStage);
                     VBox dialogVbox = new VBox(20);
                     dialogVbox.setAlignment(Pos.BASELINE_CENTER);
-                    dialogVbox.getChildren().add(new Text("Seleccione alguna opciÃ³n de paridad"));
+                    dialogVbox.getChildren().add(new Text("Seleccione alguna opción de paridad"));
                     Scene dialogScene = new Scene(dialogVbox, 300, 70);
                     dialog.setScene(dialogScene);
                     dialog.show();
@@ -414,7 +416,7 @@ public class Run extends Application {
 	                    dialog.initModality(Modality.APPLICATION_MODAL);
 	                    dialog.initOwner(primaryStage);
 	                    VBox dialogVbox = new VBox(20);
-	                    dialogVbox.getChildren().add(new Text("El numero que ingresÃ³\nno esta en el rango especificado" + "\nIngrese otra entrada"));
+	                    dialogVbox.getChildren().add(new Text("El numero que ingresó\nno esta en el rango especificado" + "\nIngrese otra entrada"));
 	                    dialogVbox.setAlignment(Pos.BASELINE_CENTER);
 	                    Scene dialogScene = new Scene(dialogVbox, 300, 100);
 	                    dialog.setScene(dialogScene);
@@ -472,7 +474,7 @@ public class Run extends Application {
 	                    if(solution.bitDetected == 0) {
 	                    	state = "No se encontraron errores";
 	                    }else {
-	                    	state = "Se detectÃ³ un error en el bit nÃºmero: " + solution.bitDetected;
+	                    	state = "Se detectó un error en el bit número: " + solution.bitDetected;
 	                    }
 	                    detection = new Text(state);
 	                    detection.setFont(new Font(15));
@@ -495,7 +497,7 @@ public class Run extends Application {
                     dialog.initModality(Modality.APPLICATION_MODAL);
                     dialog.initOwner(primaryStage);
                     VBox dialogVbox = new VBox(20);
-                    dialogVbox.getChildren().add(new Text("Su entrada no es valida" + "\nIngrese otra entrada"));
+                    dialogVbox.getChildren().add(new Text("Su entrada no es válida" + "\nIngrese otra entrada"));
                     dialogVbox.setAlignment(Pos.BASELINE_CENTER);
                     Scene dialogScene = new Scene(dialogVbox, 300, 70);
                     dialog.setScene(dialogScene);
@@ -506,7 +508,7 @@ public class Run extends Application {
         });
         
 		//Default is mainScene
-		window.setTitle("CÃ³digo Hamming - codificador y simulador de errores - DiseÃ±o LÃ³gico Grupo 1");
+		window.setTitle("Código Hamming - codificador y simulador de errores - Diseño Lógico Grupo 1");
 		window.setScene(mainScene);
 		window.centerOnScreen();
 		window.show();

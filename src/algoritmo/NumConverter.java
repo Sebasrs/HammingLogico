@@ -40,11 +40,11 @@ public class NumConverter {
 		hexNumber = hexNumber.toUpperCase();
 		
 		if(hexNumber.length() != 3) {
-			return "Su nÃºmero no es de tres dÃ­gitos";
+			return "Su número no es de tres dígitos";
 		}
 		for(int i = 0; i < hexNumber.length(); i++) {
 			if(hexInBin.get(Character.toString(hexNumber.charAt(i))) == null) {
-				return "Error su nÃºmero no es hexadecimal";
+				return "Error su número no es hexadecimal";
 			}
 			binToReturn += hexInBin.get(Character.toString(hexNumber.charAt(i)));
 		}
